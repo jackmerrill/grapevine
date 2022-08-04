@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import twemoji from "twemoji";
 
 const Twemoji = ({ emoji }) => {
-  console.log(emoji);
   return (
     <span
       dangerouslySetInnerHTML={{
