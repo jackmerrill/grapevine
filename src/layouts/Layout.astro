@@ -31,12 +31,26 @@ const getProfilePicture = (): string => {
       }
 
       .emoji {
-        @apply inline-block w-auto h-5;
+        @apply inline-block w-auto h-5
       }
     </style>
 
+    <meta name="description" content={`${profile.username}'s Grapevine`} />
+
     <!-- OpenGraph and Twitter Tags -->
     <meta property="og:title" content="Grapevine" />
-    <meta property="og:description" />
+    <meta property="og:description" content={`${profile.username}'s Grapevine`} />
+    <meta property="og:image" content={getProfilePicture()} />
+    <meta property="og:url" content={Astro.site} />
   </head>
+  <body class="w-full h-full bg-black">
+    <slot />
+
+    {import.meta.env.SHYNET_URL && (
+      <noscript>
+        <img src={`${import.meta.env.SHYNET_URL}/pixel.gif`}>
+      </noscript>
+      <script defer src={`${import.meta.env.SHYNET_URL}/script.js`}></script>
+    )}
+  </body>
 </html>
