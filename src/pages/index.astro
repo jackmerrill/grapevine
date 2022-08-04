@@ -7,6 +7,7 @@ export interface Link {
   order: number;
 }
 
+import { Image } from "@astrojs/image/components";
 import Icon from "../components/Icon";
 import Layout from "../layouts/Layout.astro";
 import { Content as About } from "../about.md";
@@ -30,21 +31,20 @@ async function getDiscordProfile(): Promise<any> {
 
 const profile = await getDiscordProfile();
 
-const getProfilePicture = (): string => {
-  return `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${
-    profile.avatar.startsWith("a_") ? "gif" : "webp"
-  }?size=96`;
-};
+const profilePicture = `https://cdn.discordapp.com/avatars/${profile.id}/${
+  profile.avatar
+}.${profile.avatar.startsWith("a_") ? "gif" : "webp"}?size=96`;
 ---
 
 <Layout>
   <div class="md:p-32 p-12 grid gap-y-8">
     <div class="w-full grid gap-y-4">
-      <img
-        src={getProfilePicture()}
+      <Image
+        src={profilePicture}
         alt={profile.username}
-        width="96px"
-        height="96px"
+        width={96}
+        height={96}
+        format="webp"
         class="w-24 h-24 justify-self-center rounded-full outline outline-indigo-500 shadow-indigo-500/50"
       />
       <h1 class="font-bold text-xl text-white justify-self-center">

@@ -4,11 +4,13 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 
+import image from "@astrojs/image";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), sitemap(), robotsTxt()],
+  integrations: [tailwind(), react(), sitemap(), robotsTxt(), image()],
   legacy: {
-    astroFlavoredMarkdown: true,
+    astroFlavoredMarkdown: true
   },
-  site: "https://grape.wtf",
+  site: "https://grape.wtf"
 });
