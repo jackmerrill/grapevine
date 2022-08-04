@@ -1,0 +1,59 @@
+---
+async function getDiscordProfile(): Promise<any> {
+  const { DISCORD_ID, DISCORD_TOKEN } = import.meta.env;
+  const json = await fetch(`https://discord.com/api/v9/users/${DISCORD_ID}`, {
+    headers: {
+      Authorization: `Bot ${DISCORD_TOKEN}`,
+    },
+  }).then((res) => res.json());
+
+  return json;
+}
+
+const profile = await getDiscordProfile();
+
+const getProfilePicture = (): string => {
+  return `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${
+    profile.avatar.startsWith("a_") ? "gif" : "png"
+  }?size=256`;
+};
+---
+
+<html lang="en" class="w-full h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Grapevine</title>
+
+    <style is:global>
+      .animated-underline {
+        @apply bg-gradient-to-r from-indigo-500 to-indigo-600 bg-[length:0px_6px] bg-left-bottom bg-no-repeat transition-[background-size] motion-reduce:bg-[length:100%_6px] motion-reduce:transition-none duration-500 motion-safe:hover:bg-[length:100%_6px] motion-safe:group-hover:bg-[length:100%_6px];
+      }
+
+      .emoji {
+        @apply inline-block w-auto h-5
+      }
+    </style>
+
+    <!-- OpenGraph and Twitter Tags -->
+    <meta property="og:title" content="Grapevine" />
+    <meta property="og:description" content={`${profile.username}'s Grapevine'`}
+    />
+    <meta property="og:image" content={getProfilePicture()} />
+    <meta property="og:url" content={Astro.site} />
+  </head>
+  <body class="w-full h-full bg-black">
+    <slot />
+
+    {import.meta.env.SHYNET_URL && (
+      <noscript>
+        <img src={`${import.meta.env.SHYNET_URL}/pixel.gif`}>
+      </noscript>
+      <script defer src={`${import.meta.env.SHYNET_URL}/script.js`}></script>
+    )}
+
+    <script src="/theme.js" is:inline>
+
+    </script>
+  </body>
+</html>

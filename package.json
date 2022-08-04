@@ -1,0 +1,26 @@
+{
+  "name": "grapevine",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^0.4.2",
+    "@astrojs/tailwind": "^0.2.5",
+    "astro": "^1.0.0-rc.4",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@icons-pack/react-simple-icons": "^5.2.0",
+    "@types/twemoji": "^13.1.2",
+    "twemoji": "^14.0.2"
+  }
+}

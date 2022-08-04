@@ -1,0 +1,12 @@
+---
+const {
+  content: { href },
+} = Astro.props;
+---
+{import.meta.env.SHYNET_URL && (
+  <noscript>
+    <img src={`${import.meta.env.SHYNET_URL}/pixel.gif`}>
+  </noscript>
+  <script src={`${import.meta.env.SHYNET_URL}/script.js`}></script>
+)}
+<meta http-equiv="refresh" content={`0; url=${href}`} />
