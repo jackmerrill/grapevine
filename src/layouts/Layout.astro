@@ -15,7 +15,7 @@ const profile = await getDiscordProfile();
 const getProfilePicture = (): string => {
   return `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${
     profile.avatar.startsWith("a_") ? "gif" : "webp"
-  }?size=128`;
+  }?size=96`;
 };
 const desc = `${profile.username}'s Grapevine`
 ---
