@@ -1,5 +1,5 @@
-import * as HeroIconsOutline from "@heroicons/react/outline/esm";
-import * as HeroIconsSolid from "@heroicons/react/solid/esm";
+import * as HeroIconsOutline from "@heroicons/react/outline/esm/index.js";
+import * as HeroIconsSolid from "@heroicons/react/solid/esm/index.js";
 import * as SimpleIcons from "@icons-pack/react-simple-icons";
 
 export default function Icon({ name }: { name: string }) {
