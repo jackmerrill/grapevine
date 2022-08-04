@@ -14,8 +14,8 @@ const profile = await getDiscordProfile();
 
 const getProfilePicture = (): string => {
   return `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${
-    profile.avatar.startsWith("a_") ? "gif" : "png"
-  }?size=256`;
+    profile.avatar.startsWith("a_") ? "gif" : "webp"
+  }?size=128`;
 };
 ---
 
@@ -31,29 +31,12 @@ const getProfilePicture = (): string => {
       }
 
       .emoji {
-        @apply inline-block w-auto h-5
+        @apply inline-block w-auto h-5;
       }
     </style>
 
     <!-- OpenGraph and Twitter Tags -->
     <meta property="og:title" content="Grapevine" />
-    <meta property="og:description" content={`${profile.username}'s Grapevine'`}
-    />
-    <meta property="og:image" content={getProfilePicture()} />
-    <meta property="og:url" content={Astro.site} />
+    <meta property="og:description" />
   </head>
-  <body class="w-full h-full bg-black">
-    <slot />
-
-    {import.meta.env.SHYNET_URL && (
-      <noscript>
-        <img src={`${import.meta.env.SHYNET_URL}/pixel.gif`}>
-      </noscript>
-      <script defer src={`${import.meta.env.SHYNET_URL}/script.js`}></script>
-    )}
-
-    <script src="/theme.js" is:inline>
-
-    </script>
-  </body>
 </html>

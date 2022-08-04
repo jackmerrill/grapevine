@@ -20,5 +20,6 @@ It's easy to get set up with Grapevine.
    - `DISCORD_TOKEN` - The token for your Discord bot
    - `DISCORD_ID` - The user ID of the Discord user you want to use
 4. Add/modify your links in `src/pages/links`
-5. Build the site with `yarn/npm/pnpm build`
-6. Host the site wherever you want! (Cloudflare Pages, Vercel, Netlify, etc.)
+5. Modify your site url in `astro.config.mjs`
+6. Build the site with `yarn/npm/pnpm build`
+7. Host the site wherever you want! (Cloudflare Pages, Vercel, Netlify, etc.)

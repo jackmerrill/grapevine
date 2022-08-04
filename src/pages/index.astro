@@ -32,8 +32,8 @@ const profile = await getDiscordProfile();
 
 const getProfilePicture = (): string => {
   return `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${
-    profile.avatar.startsWith("a_") ? "gif" : "png"
-  }?size=256`;
+    profile.avatar.startsWith("a_") ? "gif" : "webp"
+  }?size=128`;
 };
 ---
 
@@ -43,6 +43,8 @@ const getProfilePicture = (): string => {
       <img
         src={getProfilePicture()}
         alt={profile.username}
+        width="96px"
+        height="96px"
         class="w-24 h-24 justify-self-center rounded-full border-4 border-indigo-500 shadow-indigo-500/50"
       />
       <h1 class="font-bold text-xl text-white justify-self-center">
