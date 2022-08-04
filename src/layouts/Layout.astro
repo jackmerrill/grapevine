@@ -17,6 +17,7 @@ const getProfilePicture = (): string => {
     profile.avatar.startsWith("a_") ? "gif" : "webp"
   }?size=128`;
 };
+const desc = `${profile.username}'s Grapevine`
 ---
 
 <html lang="en" class="w-full h-full">
@@ -35,11 +36,11 @@ const getProfilePicture = (): string => {
       }
     </style>
 
-    <meta name="description" content={`${profile.username}'s Grapevine`} />
+    <meta name="description" content={desc} />
 
     <!-- OpenGraph and Twitter Tags -->
     <meta property="og:title" content="Grapevine" />
-    <meta property="og:description" content={`${profile.username}'s Grapevine`} />
+    <meta property="og:description" content={desc} />
     <meta property="og:image" content={getProfilePicture()} />
     <meta property="og:url" content={Astro.site} />
   </head>
@@ -48,7 +49,7 @@ const getProfilePicture = (): string => {
 
     {import.meta.env.SHYNET_URL && (
       <noscript>
-        <img src={`${import.meta.env.SHYNET_URL}/pixel.gif`}>
+        <img src={`${import.meta.env.SHYNET_URL}/pixel.gif`} />
       </noscript>
       <script defer src={`${import.meta.env.SHYNET_URL}/script.js`}></script>
     )}
